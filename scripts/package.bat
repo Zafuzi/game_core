@@ -1,1 +1,1 @@
-npx electron-packager . Game --arch=x64 --overwrite
+npx electron-packager . Game --platform=darwin,linux,win32 --arch=x64 --overwrite
