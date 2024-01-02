@@ -38,7 +38,7 @@ function loop() {
 	ctx.fillText(fps, 10, 34);
 }
 
-addEventListener("DOMContentLoaded", dcl => {
+addEventListener("DOMContentLoaded", () => {
 	canvas = document.querySelector("#canvas");
 	ctx = canvas.getContext('2d');
 
@@ -48,7 +48,7 @@ addEventListener("DOMContentLoaded", dcl => {
 	default_font = "24px sans-serif";
 
 	// call the electron API
-	window.rpc.post("ping");
+	window["rpc"]?.post("ping");
 
 	// start the game
 	requestAnimationFrame(FPS_LOCK)
@@ -58,19 +58,19 @@ addEventListener("resize", resize)
 
 
 // Getting data from electron
-window.rpc.get("ping", r => {
+window["rpc"]?.get("ping", r => {
 	message = "Hello Game: " + r;
 })
 
 // HELPERS
 function resize() {
-	var cssToRealPixels = window.devicePixelRatio || 1;
+	const cssToRealPixels = window.devicePixelRatio || 1;
 
 	// Lookup the size the browser is displaying the canvas in CSS pixels
-	// and compute a size needed to make our drawingbuffer match it in
+	// and compute a size needed to make our drawingBuffer match it in
 	// device pixels.
-	var displayWidth = Math.floor(canvas.clientWidth * cssToRealPixels);
-	var displayHeight = Math.floor(canvas.clientHeight * cssToRealPixels);
+	const displayWidth = Math.floor(canvas.clientWidth * cssToRealPixels);
+	const displayHeight = Math.floor(canvas.clientHeight * cssToRealPixels);
 
 	// Check if the canvas is not the same size.
 	if (canvas.width !== displayWidth ||

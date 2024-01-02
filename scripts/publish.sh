@@ -20,5 +20,8 @@ if [ ! -d "Game-darwin-x64" ]; then
 fi
 
 butler push Game-win32-x64 $username/$gameName:win64
-butler push Game-linux-x64 $username/$gameName:win64
-butler push Game-darwin-x64 $username/$gameName:win64
+butler push Game-linux-x64 $username/$gameName:linux64
+butler push Game-darwin-x64 $username/$gameName:osx64
+
+cd src || exit
+butler push . $username/$gameName:html5
