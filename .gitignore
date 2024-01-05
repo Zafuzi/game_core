@@ -2,3 +2,4 @@ node_modules
 Game-*
 .idea
 .vscode
+dist

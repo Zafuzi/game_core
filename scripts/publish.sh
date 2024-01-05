@@ -1,27 +1,19 @@
 #!/bin/bash
 
 username=zafuzi
-gameName=game-core
+gameName=visualthings
 
 # check if Game-* exists, if not exit
-if [ ! -d "Game-win32-x64" ]; then
-  echo "Game-win32-x64 does not exist"
+if [ ! -d "dist" ]; then
+  echo "dist does not exist"
   exit 1
 fi
 
-if [ ! -d "Game-linux-x64" ]; then
-  echo "Game-linux-x64 does not exist"
-  exit 1
-fi
+butler push dist/Game-win32-x64 $username/$gameName:win64
+butler push dist/Game-linux-x64 $username/$gameName:linux64
+butler push dist/Game-darwin-x64 $username/$gameName:osx64
+butler push dist/Game-darwin-arm64 $username/$gameName:osxarm64
+butler push dist/Game-html5 $username/$gameName:html5
 
-if [ ! -d "Game-darwin-x64" ]; then
-  echo "Game-darwin-x64 does not exist"
-  exit 1
-fi
 
-butler push Game-win32-x64 $username/$gameName:win64
-butler push Game-linux-x64 $username/$gameName:linux64
-butler push Game-darwin-x64 $username/$gameName:osx64
-
-cd src || exit
-butler push . $username/$gameName:html5
+echo "done!"
