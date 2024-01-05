@@ -1,7 +1,7 @@
 #!/bin/bash
 
 username=zafuzi
-gameName=game-core
+gameName=visualthings
 
 # check if Game-* exists, if not exit
 if [ ! -d "dist" ]; then
